@@ -3,8 +3,6 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-
-
 import { getGalleryData } from './js/pixabay-api';
 import { addLoader, removeLoader, markup } from './js/render-functions';
 
@@ -12,8 +10,8 @@ const form = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 
 let lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt', 
-  captionDelay: 250,  
+  captionsData: 'alt',
+  captionDelay: 250,
 });
 
 form.addEventListener('submit', onSubmitForm);
@@ -34,6 +32,7 @@ function onSubmitForm(event) {
     return;
   }
 
+  console.log('Calling addLoader'); // Перевірка чи викликається addLoader
   addLoader(gallery);
 
   getGalleryData(searchValue)
@@ -49,11 +48,10 @@ function onSubmitForm(event) {
       }
 
       const galleryMarkup = markup(data);
-      gallery.insertAdjacentHTML('beforeend', galleryMarkup)
+      gallery.insertAdjacentHTML('beforeend', galleryMarkup);
       lightbox.refresh();
     })
     .catch(error => {
-      console.error('Error:', error);
       iziToast.error({
         title: 'Error',
         message: `Error: ${error.message}`,

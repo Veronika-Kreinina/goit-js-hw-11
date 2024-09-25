@@ -121,7 +121,7 @@ button:hover {
   font-weight: 400;
 }
 
-.loader {
+.loader-text {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -131,6 +131,19 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @import url('./reset.css');
