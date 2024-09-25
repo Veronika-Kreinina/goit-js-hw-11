@@ -32,12 +32,12 @@ function onSubmitForm(event) {
     return;
   }
 
-  console.log('Calling addLoader'); // Перевірка чи викликається addLoader
+gallery.innerHTML = '';
   addLoader(gallery);
 
   getGalleryData(searchValue)
     .then(data => {
-      gallery.innerHTML = '';
+      
       if (data.hits.length === 0) {
         iziToast.info({
           position: 'topRight',
